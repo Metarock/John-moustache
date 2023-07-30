@@ -62,7 +62,7 @@ const Cart = () => {
           </div>
         </button>
       </PopoverTrigger>
-      <PopoverContent className="w-80 border-lightGreyBorder">
+      <PopoverContent className="w-80 border-lightGreyBorder bg-white">
         <div className="flex flex-col gap-2">
           {mockData.map((data) => (
             <div key={data.id} className="flex ">

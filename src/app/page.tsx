@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import teeShirtImage from "@public/images/classic-tee.jpg";
 import { cn, getCurrencyFormat } from "@/utils/helpers";
 import { StarIcon } from "@heroicons/react/24/outline";
+import ProductSizes from "@/features/productSizes";
 
 async function getProduct(): Promise<Product> {
   const res = await fetch(
@@ -52,9 +53,7 @@ export default async function Home() {
           />
         </div>
 
-        <div className="mt-6">
-          <h3 className="text-sm text-fontSecondary">Sizes</h3>
-        </div>
+        <ProductSizes sizes={product.sizeOptions} />
       </div>
     </div>
   );
