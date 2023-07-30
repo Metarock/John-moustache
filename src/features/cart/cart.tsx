@@ -68,16 +68,25 @@ const Cart = () => {
           </div>
         </button>
       </PopoverTrigger>
-      <PopoverContent className="w-80 border-lightGreyBorder bg-white">
-        <div className="flex flex-col gap-2">
+      <PopoverContent
+        sideOffset={5}
+        align="end"
+        alignOffset={-64}
+        className=" w-[calc(100vw-1px)] sm:w-80 border-lightGreyBorder bg-white m"
+      >
+        <h2 className="text-2xl font-black text-fontPrimary leading-none">
+          My Cart
+        </h2>
+
+        <div className="flex flex-col gap-4 mt-4">
           {products.map((product, index) => (
-            <div key={index} className="flex ">
+            <div key={index} className="flex">
               <div className="relative">
                 <Image
                   src={product.image}
-                  height={64}
+                  height={80}
                   width={64}
-                  className="w-16 h-16 rounded-lg"
+                  className="w-16 h-20 rounded-lg"
                   alt={product.productName}
                   unoptimized
                 />
