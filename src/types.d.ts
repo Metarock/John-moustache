@@ -11,3 +11,11 @@ export interface ProductSizeOps {
   id: number;
   label: string;
 }
+
+interface CartProduct {
+  productName: string;
+  price: number;
+  sizeOption: { id: number; label: string };
+  image: StaticImageData;
+  quantity?: number;
+}

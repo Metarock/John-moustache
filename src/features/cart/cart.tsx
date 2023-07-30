@@ -10,6 +10,7 @@ import React from "react";
 import teeShirtImage from "@public/images/classic-tee.jpg";
 import Image from "next/image";
 import { getCurrencyFormat } from "@/utils/helpers";
+import { useMiniCartStore } from "@/store/useMiniCartStore";
 
 const mockData = [
   {
@@ -50,6 +51,11 @@ const mockData = [
 ];
 
 const Cart = () => {
+  const products = useMiniCartStore((state) => state.product);
+  const totalQuantity = products.reduce(
+    (totalQuantity, product) => totalQuantity + (product.quantity || 0),
+    0
+  );
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -57,31 +63,35 @@ const Cart = () => {
           <div className="relative">
             <ShoppingCartIcon className="h-6 w-6 text-fontPrimary" />
             <span className="absolute flex justify-center items-center px-1 -top-1.5 -right-2 min-w-[1rem] text-xs rounded-full bg-indigo-100 text-fontPrimary tabular-nums">
-              {mockData.length}
+              {totalQuantity}
             </span>
           </div>
         </button>
       </PopoverTrigger>
       <PopoverContent className="w-80 border-lightGreyBorder bg-white">
         <div className="flex flex-col gap-2">
-          {mockData.map((data) => (
-            <div key={data.id} className="flex ">
+          {products.map((product, index) => (
+            <div key={index} className="flex ">
               <div className="relative">
                 <Image
-                  src={data.image}
+                  src={product.image}
                   height={64}
                   width={64}
                   className="w-16 h-16 rounded-lg"
-                  alt={data.productName}
+                  alt={product.productName}
                   unoptimized
                 />
               </div>
               <div className="flex-col justify-center flex-1 mb-1">
                 <h3 className="text-lg font-semibold text-fontPrimary leading-none">
-                  {data.productName}
+                  {product.productName}
                 </h3>
-                <p>1 x {getCurrencyFormat(data.price)}</p>
-                <p className="text-indigo-600">Size: {data.sizeOption.label}</p>
+                <p>
+                  {product.quantity} x {getCurrencyFormat(product.price)}
+                </p>
+                <p className="text-indigo-600">
+                  Size: {product.sizeOption.label}
+                </p>
               </div>
             </div>
           ))}
