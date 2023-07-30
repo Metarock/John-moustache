@@ -11,6 +11,7 @@ import teeShirtImage from "@public/images/classic-tee.jpg";
 import Image from "next/image";
 import { getCurrencyFormat } from "@/utils/helpers";
 import { useMiniCartStore } from "@/store/useMiniCartStore";
+import Link from "next/link";
 
 const mockData = [
   {
@@ -105,6 +106,12 @@ const Cart = () => {
             </div>
           ))}
         </div>
+        <Link
+          href="#"
+          className="flex items-center justify-center w-full p-2 mt-4 rounded-md  hover:bg-gray-100 disabled:bg-indigo-200 text-fontPrimary border border-darkGreyBorder font-semibold transition-colors duration-200 ease-in-out"
+        >
+          View Cart
+        </Link>
       </PopoverContent>
     </Popover>
   );

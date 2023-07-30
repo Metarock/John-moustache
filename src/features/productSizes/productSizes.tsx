@@ -26,7 +26,6 @@ const ProductSizes = ({ sizes }: Props) => {
       id: selectedSize === "S" ? 1 : selectedSize === "M" ? 2 : 3,
       label: selectedSize,
     };
-
     const addProduct = {
       productName: "Classic Tee",
       price: 75,
