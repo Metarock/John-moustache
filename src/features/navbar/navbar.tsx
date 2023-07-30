@@ -1,11 +1,10 @@
+"use client";
+
 import Logo from "@/components/logo";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import React from "react";
+import Cart from "../cart";
 import Navbarmenus from "../navbarmenus";
-import {
-  MagnifyingGlassIcon,
-  ShoppingCartIcon,
-} from "@heroicons/react/24/outline";
 
 const Navbar = () => {
   return (
@@ -27,6 +26,7 @@ const Navbar = () => {
             <div className="h-6">
               <MagnifyingGlassIcon className="text-fontPrimary h-6 w-6" />
             </div>
+            <Cart />
           </div>
         </nav>
       </header>

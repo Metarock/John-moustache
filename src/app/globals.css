@@ -6,4 +6,7 @@
   --header-bg: #f6f6f7;
   --font-primary: #222222;
   --font-secondary: #888888;
+  --required-color: #c90000;
+  --lightGreyBorder: #cccccc;
+  --darkGreyBorder: #222222;
 }
