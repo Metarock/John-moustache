@@ -27,6 +27,18 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
+## Techstack Used & Documentation
+
+- [TailwindCSS](https://tailwindcss.com/docs/installation)
+- [RadixUI](https://www.radix-ui.com/docs/primitives/overview/getting-started) - for building UI components
+- [Zustand](https://github.com/pmndrs/zustand) - for managing global state
+- [Framer Motion](https://www.framer.com/docs/) - for animating UI components
+- [SWR](https://swr.vercel.app/docs/getting-started) - for fetching and managing data
+- [BulletProof React](https://github.com/alan2207/bulletproof-react) - our project structure is inspired by react boilterplate
+- [Typescript](https://www.typescriptlang.org/docs/) - static type checker; typed Superset of JavaScript
+- [Shadcn UI](https://ui.shadcn.com/docs) - a collaction of re-usable components that we can copy and paste into our apps and customise it according to our needs. It uses both tailwindcss and radixui to build the components
+- [React Docs](https://react.dev/) - improvements from legacy docs, recommends other [React Frameworks](https://react.dev/learn/start-a-new-react-project) rather than CRA. Additionally, the [Synchronizing With Effects](https://react.dev/learn/synchronizing-with-effects) and [You Might Not Need an Effect](https://react.dev/learn/you-might-not-need-an-effect) pages are beneficial and well documented. Reducing the amount of unecessary useEffects within our web application
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
