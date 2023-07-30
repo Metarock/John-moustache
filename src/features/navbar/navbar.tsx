@@ -7,7 +7,124 @@ import Cart from "../cart";
 import Navbarmenus from "../navbarmenus";
 import { useMiniCartStore } from "@/store/useMiniCartStore";
 import { AnimatePresence, motion } from "framer-motion";
+import * as Dialog from "@radix-ui/react-dialog";
 import { cn } from "@/utils/helpers";
+import { useState } from "react";
+
+const mockmenus = [
+  { name: "Men", href: "#" },
+  { name: "Women", href: "#" },
+  { name: "Kids", href: "#" },
+  { name: "All Products", href: "#" },
+];
+
+const MobileMenu = () => {
+  const [openMobile, setOpenMobile] = useState(false);
+
+  return (
+    <div className="relative h-6">
+      <Dialog.Root modal={false} open={openMobile} onOpenChange={setOpenMobile}>
+        <Dialog.Trigger className="absolute top-0 right-0 text-gray-600 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset transition-colors ease-in-out duration-200 focus-visible:ring-indigo-500">
+          <span className="sr-only">Open main menu</span>
+          <motion.svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-6 h-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <motion.line
+              x1={4}
+              x2={20}
+              y1={6}
+              y2={6}
+              animate={
+                openMobile
+                  ? { rotate: 45, translateY: 6 }
+                  : { rotate: 0, translateY: 0 }
+              }
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              transition={{ type: "tween", duration: 0.2 }}
+            />
+            <motion.line
+              x1={4}
+              x2={20}
+              y1={12}
+              y2={12}
+              animate={openMobile ? { opacity: 0 } : { opacity: 1 }}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              transition={{ type: "tween", duration: 0.15 }}
+            />
+            <motion.line
+              x1={4}
+              x2={20}
+              y1={18}
+              y2={18}
+              animate={
+                openMobile
+                  ? { rotate: -45, translateY: -6 }
+                  : { rotate: 0, translateY: 0 }
+              }
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              transition={{ type: "tween", duration: 0.2 }}
+            />
+          </motion.svg>
+        </Dialog.Trigger>
+        <AnimatePresence>
+          {openMobile && (
+            <Dialog.Portal forceMount>
+              <Dialog.Content
+                asChild
+                forceMount
+                className="fixed inset-0 z-[49] w-screen"
+              >
+                <motion.div
+                  initial="hidden"
+                  animate="show"
+                  exit="hidden"
+                  variants={{
+                    hidden: {
+                      height: 0,
+                      transition: { duration: 0.125 },
+                    },
+                    show: { height: "auto" },
+                  }}
+                  transition={{ duration: 0.25 }}
+                >
+                  <nav
+                    className="h-full pt-[5.5rem] bg-headerBg"
+                    aria-label="Global"
+                  >
+                    <div className="box-border flex flex-col h-full">
+                      <div className="overflow-y-auto grow">
+                        <div className="p-2 mx-auto max-w-8xl sm:px-4">
+                          {mockmenus.map((menu) => (
+                            <Link
+                              key={menu.name}
+                              href={menu.href}
+                              onClick={() => setOpenMobile(false)}
+                              className="block text-lg px-3 py-2 font-medium rounded-md text-fontPrimary"
+                            >
+                              {menu.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </nav>
+                </motion.div>
+              </Dialog.Content>
+            </Dialog.Portal>
+          )}
+        </AnimatePresence>
+      </Dialog.Root>
+    </div>
+  );
+};
 
 const Navbar = () => {
   const products = useMiniCartStore((state) => state.product);
@@ -66,6 +183,9 @@ const Navbar = () => {
                 </motion.div>
               )}
             </AnimatePresence>
+            <div className="flex ml-10 lg:ml-0 lg:hidden">
+              <MobileMenu />
+            </div>
           </div>
         </nav>
       </header>

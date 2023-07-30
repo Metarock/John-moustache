@@ -1,10 +1,8 @@
+import ProductSizes from "@/features/productSizes";
 import { Product } from "@/types";
+import { getCurrencyFormat } from "@/utils/helpers";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import teeShirtImage from "@public/images/classic-tee.jpg";
-import { cn, getCurrencyFormat } from "@/utils/helpers";
-import { StarIcon } from "@heroicons/react/24/outline";
-import ProductSizes from "@/features/productSizes";
 
 async function getProduct(): Promise<Product> {
   const res = await fetch(
