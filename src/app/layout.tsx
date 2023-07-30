@@ -21,9 +21,10 @@ export default function RootLayout({
         <div className="fixed h-screen w-screen">
           <div className="relative">
             <Navbar />
-            <div className="h-full min-h-[calc(100vh-5.5rem-284px)] lg:min-h-[calc(100vh-5.5rem-328px)]"></div>
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
-              <div className="bg-white rounded-2xl">{children}</div>
+            <div className="h-full min-h-[calc(100vh-5.5rem-284px)] lg:min-h-[calc(100vh-5.5rem-328px)]">
+              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
+                <div className="bg-white rounded-2xl">{children}</div>
+              </div>
             </div>
           </div>
         </div>
